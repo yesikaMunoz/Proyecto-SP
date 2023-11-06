@@ -1,73 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom"; 
 
 function Login() {
-const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-});
-
-const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-    ...formData,
-    [name]: value,
-    });
-};
-
-const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Datos enviados al Dashboard:", formData);
-    // Aquí puedes enviar los datos a tu Dashboard o cualquier otro lugar necesario
-};
-
 return (
-    <div className="login-box">
-    <div className="login-logo">
-        <b>Iniciar Sesión</b>
+<div>
+<div className="container" id="container">
+    <div className="form-container sign-in-container">
+    <form action="#">
+        <h1>Ingresa Aqui</h1>
+        <div className="social-container">
+        </div>
+        <input type="email" placeholder="Email" name="email" />
+        <input type="password" placeholder="Contraseña" name="password" />
+        <Link href="#">¿Olvidaste tu Contraseña?</Link>
+        <button>Ingresar</button>
+    </form>
     </div>
-    <div className="card">
-        <div className="card-body login-card-body">
-        <p className="login-box-msg">Bienvenido, ingrese sus credenciales</p>
-        <form onSubmit={handleSubmit}>
-            <div className="input-group mb-3">
-            <input
-                type="email"
-                className="form-control"
-                placeholder="Email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-            />
-            <div className="input-group-append">
-                <div className="input-group-text">
-                <span className="fas fa-envelope" />
-                </div>
-            </div>
-            </div>
-            <div className="input-group mb-3">
-            <input
-                type="password"
-                className="form-control"
-                placeholder="Contraseña"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-            />
-            <div className="input-group-append">
-                <div className="input-group-text">
-                <span className="fas fa-lock" />
-                </div>
-            </div>
-            </div>
-            <div className="social-auth-links text-center mb-3">
-            <button type="submit" className="btn btn-block btn-primary">
-                Ingresar
-            </button>
-            </div>
-        </form>
+    <div className="overlay-container">
+    <div className="overlay">
+       
+        <div className="overlay-panel overlay-right">
+        <h1>¡Hola, Amigo!</h1>
+        <p>Crea tu cuenta con tan solo unos pocos datos</p>
+        <button className="ghost" id="signUp">Registrar</button>
         </div>
     </div>
     </div>
+</div>
+</div>
+
 );
 }
 

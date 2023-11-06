@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './Pages/Auth/login';
 
-import './App.css';
+import '../src/css/login.css';
 
 function App() {
   return (
