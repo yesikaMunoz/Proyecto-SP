@@ -1,0 +1,66 @@
+{
+  "User": [
+    {
+      "idUsu": 1,
+      "tipoDoc": "CC",
+      "numDoc": "1018412855",
+      "nombre": "Mario Andres",
+      "apellido": "Morelo Hernandez",
+      "fechaNac": "2005-08-23",
+      "email": "marioandresmorelo13@gmail.com",
+      "password": "c65db167924464039e5243e93a14e5d2"
+    },
+    {
+      "idUsu": 2,
+      "tipoDoc": "Pasaporte",
+      "numDoc": "1200000005",
+      "nombre": "Ronald Santiago",
+      "apellido": "Hernandez Murcia",
+      "fechaNac": "2006-01-05",
+      "email": "Santicracksito777@gmail.com",
+      "password": "7ac75cf9d3dc525622c3be95e7e26cae"
+    }
+  ],
+  "Ticket": [
+    {
+      "id": 1,
+      "titulo": "Ejemplo de ticket",
+      "descripcion": "Esta es una descripción de ejemplo para el ticket.",
+      "usuarioId": 1,
+      "estado": "No Aprobado",
+      "fechaOrd": "2023-08-23"
+    },
+    {
+      "titulo": "Ronald",
+      "descripcion": "PQRS",
+      "usuarioId": 5,
+      "id": 2,
+      "estado": "No Aprobado",
+      "fechaOrd": "2021-07-23"
+    },
+    {
+      "titulo": "Mario",
+      "descripcion": "PQRS",
+      "usuarioId": 2,
+      "id": 3,
+      "estado": "Aprobado",
+      "fechaOrd": "2019-01-31"
+    },
+    {
+      "titulo": "Jaykel",
+      "descripcion": "PQRS",
+      "usuarioId": 3,
+      "id": 4,
+      "estado": "Aprobado",
+      "fechaOrd": "2023-10-23"
+    },
+    {
+      "titulo": "Jhoan",
+      "descripcion": "Comunicado urgente",
+      "usuarioId": 6,
+      "id": 21,
+      "estado": "Aprobado",
+      "fechaOrd": "2023-10-23"
+    }
+  ]
+}
