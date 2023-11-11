@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom"; 
+import "../../css/login.css";
 
 function Login() {
 return (
@@ -18,11 +19,12 @@ return (
     </div>
     <div className="overlay-container">
     <div className="overlay">
-       
         <div className="overlay-panel overlay-right">
         <h1>¡Hola, Amigo!</h1>
         <p>Crea tu cuenta con tan solo unos pocos datos</p>
+        <Link to={"/CreateAccount"}>
         <button className="ghost" id="signUp">Registrar</button>
+                </Link>
         </div>
     </div>
     </div>
