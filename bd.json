@@ -1,0 +1,18 @@
+{
+  "Usuarios": [
+    {
+      "username": "Mario Morelo",
+      "email": "mariomorelo09@hotmail.com",
+      "password": "123456",
+      "id": 1
+    }
+  ],
+  "Tickets": [
+    {
+      "titulo": "Psi",
+      "descripcion": "Ticket de prueba",
+      "usuarioId": 1,
+      "id": 1
+    }
+  ]
+}
