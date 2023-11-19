@@ -26,7 +26,6 @@ const CreateAccount = () => {
 
     const createaccount = async ()=>{
         
-      
             const verify = async (username) => {
         try {
             const response = await APIInvoke.invokeGET(
