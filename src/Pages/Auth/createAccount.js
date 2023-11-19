@@ -8,10 +8,11 @@ const CreateAccount = () => {
     const [usuario, setUsuario] = useState({
         username:'',
         email:'',
+        phone:'',
         password:'',
         confirm:'',
     })
-    const { username,email,password,confirm} = usuario;
+    const { username,email,phone,password,confirm} = usuario;
 
     const onChange = (e) => {
         setUsuario({
@@ -24,11 +25,28 @@ const CreateAccount = () => {
     },[])
 
     const createaccount = async ()=>{
+        
+      
+            const verify = async (username) => {
+        try {
+            const response = await APIInvoke.invokeGET(
+                `/Usuarios?username=${username}`
+            );
+            if (response && response.length > 0) {
+                return true; // El usuario ya existe
+            }else{
+                return false; // El usuario no existe
+            }
 
+        } catch (error) {
+            console.error(error);
+            return false; // Maneja el error si la solicitud falla
+        }
+        }
         if(password !== confirm){
             const msg = "Contraseñas no coinciden.";
             swal({
-                title: 'Error',
+                title: '🤨',
                 text: msg,
                 icon: 'error',
                 buttons: {
@@ -42,9 +60,9 @@ const CreateAccount = () => {
                 }
             });
         }else if (password.length < 6){
-            const msg = "Contraseña demasiado corta (mayor a 6 caracteres.).";
+            const msg = "Contraseña demasiado corta (mayor a 6 caracteres.)";
                 swal({
-                    title: 'Cuidado',
+                    title: '🤫',
                     text: msg,
                     icon: 'warning',
                     buttons: {
@@ -58,20 +76,18 @@ const CreateAccount = () => {
                     }
                 });
             } else {
+                const existingUser = await verify(username);   
                 const data ={
                     username:usuario.username,
                     email:usuario.email,
+                    phone:usuario.phone,
                     password:usuario.password
         
                 }
-                const response = await APIInvoke.invokePOST(`/Usuarios`, data);
-                //console.log(response);
-                const mensaje = response.msg;
-    
-                if (mensaje === 'El usuario ya existe'){
+                if (existingUser){
                     const msg = "El usuario ya existe.";
                     swal({
-                        title: 'Error',
+                        title: '😒',
                         text: msg,
                         icon: 'info',
                         buttons: {
@@ -83,11 +99,14 @@ const CreateAccount = () => {
                                 closeModal: true
                             }
                         }
+                        
                     });
-            }else{
+            } 
+            
+            else{
                 const msg = "El usuario fue creado correctamente.";
                     swal({
-                        title: 'Bienvenido',
+                        title: '😁👍',
                         text: msg,
                         icon: 'success',
                         buttons: {
@@ -100,10 +119,12 @@ const CreateAccount = () => {
                             }
                         }
                     });
-
+                const response = await APIInvoke.invokePOST(`/Usuarios`, data);
+                //console.log(response);
                     setUsuario({
                         username:'',
                         email:'',
+                        phone:'',
                         password:'',
                         confirm:'',
                     })
@@ -126,6 +147,8 @@ return  (
         <input type="text" name="username" id="username"  placeholder="Nombre de usuario" value={username} 
                                 onChange={onChange}  />
         <input type="email" name="email"   id="email" placeholder="Email" value={email} 
+                                onChange={onChange}/>
+        <input type="number" name="phone"  id="phone" placeholder="Telefono" value={phone} 
                                 onChange={onChange}/>
         <input type="password" name="password"  id="password" placeholder="Contraseña" value={password} 
                                 onChange={onChange}/>

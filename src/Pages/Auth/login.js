@@ -1,112 +1,147 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Axios from "axios";
-import Cookies from "universal-cookie";
-import swal from 'sweetalert';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import APIInvoke from "../../Utils/APIInvoke.js";
+import swal from "sweetalert";
 
-const baseUrl = "http://localhost:4000/Usuarios";
-const cookies = new Cookies();
+const Login = () => {
 
-class Login extends Component {
-  state = {
-    form: {
-      email: "",
-      password: "",
-    },
-  };
+    //Este método es para redireccionar un componente a otro
+    const navigate = useNavigate();
 
-handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({
-    form: {
-        ...this.state.form,
-        [name]: value,
-    },
+    //Definir el estado inicial de las variables
+    const [usuario, setUsuario] = useState({
+        email: '',
+        password: ''
     });
-};
 
-iniciarSesion = () => {
-    Axios.get(baseUrl, {
-    params: {
-        email: this.state.form.email,
-        password:this.state.form.password,
-    },
-    })
-    .then((response) => {
-        return response.data;
-    })
-    .then((response) => {
-        if (response.length > 0) {
-        var respuesta = response[0];
-        cookies.set("id", respuesta.id, { path: "/" });
-        cookies.set("username", respuesta.username, { path: "/" });
-        cookies.set("email", respuesta.email, { path: "/" });
-        const msg = "Ingreso Exitoso.";
-        swal({
-            title: 'Bienvenido',
-            text: msg,
-            icon: 'success',
-            buttons: {
-            confirmar:{
-                    text: 'Ok',
-                    value: true,
-                    visible: true,
-                    className: 'btn btn-primary',
-                    closeModal: true
-                }
-            }
+    const { email, password } = usuario;
+
+    const onChange = (e) => {
+        setUsuario({
+            ...usuario,
+            [e.target.name]: e.target.value
         });
-        window.location.href = "/Dashboard";
-        } else {
-            const msg = "Usuario o ontraseña incorrecta.";
-            swal({
-                title: 'Cuidado',
-                text: msg,
-                icon: 'warning',
-                buttons: {
-                    confirmar:{
-                        text: 'Ok',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-danger',
-                        closeModal: true
-                    }
-                }
-            });
-        }
-    })
-    .catch((error) => {
-        console.error(error);
-    });
-};
+    }
 
-render() {
-    return (
+    useEffect(() => {
+        document.getElementById("email").focus();
+    }, [])
+
+
+    const connect = async () => {
+        const verify = async (email, password) => {
+            try {
+                const response = await APIInvoke.invokeGET(
+                    `/Usuarios?email=${email}&password=${password}`
+                );
+                if (response && response.length > 0) {
+                    return response[0];
+                }
+                return null; 
+            } catch (error) {
+                console.error(error);
+                return null; 
+            }
+        };
+
+        if(password.length < 6){
+            const msg = "Contraseña demasiado corta (Debe superar los 6 caracteres).";
+            swal({
+            title: "😠",
+            text: msg,
+            icon: "info",
+            buttons: {
+                confirm: {
+                text: "Ok",
+                value: true,
+                visible: true,
+                className: "btn btn-danger",
+                closeModal: true,
+                },
+            },
+            });
+        }else{
+            const existingUser = await verify(email, password);
+            const response = await APIInvoke.invokeGET(
+                `/Usuarios?email=${email}&password=${password}`
+            );
+
+            if (!existingUser) {
+                const msg = "No fue posible iniciar sesión, usuario o contraseña incorrecto.";
+                new swal({
+                    title: '😑',
+                    text: msg,
+                    icon: 'error',
+                    buttons: {
+                        confirm: {
+                            text: 'Ok',
+                            value: true,
+                            visible: true,
+                            className: 'btn btn-danger',
+                            closeModal: true
+                        }
+                    }
+                });
+            }else{
+                const msg = "Ingreso exitoso";
+                new swal({
+                    title: '🥳🥳',
+                    text: msg,
+                    icon: 'success',
+                    buttons: {
+                        confirm: {
+                            text: 'Ok',
+                            value: true,
+                            visible: true,
+                            className: 'btn btn-danger',
+                            closeModal: true
+                        }
+                    }
+                });
+                //Contenemos el token de acceso
+                const jwt = response.token;
+
+                //Guardar el token en el localstorage
+                localStorage.setItem('token', jwt);
+
+                //Redireccionamos al home o pagina principal
+                navigate("/Home")
+            }
+        }
+    }
+
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        connect();
+    }
+
+    return(
         <div> 
         <div className="container" id="container"> 
         <div className="form-container sign-in-container"> 
-            <form> 
+            <form onSubmit={onSubmit}> 
             <h1>Ingresa Aqui</h1>
             <div className="social-container">
             <input 
                 type="email"
                 id="email" 
-                className="form-control"
                 name="email" 
                 placeholder="Email" 
-                onChange={this.handleChange} 
+                value={email}
+                onChange={onChange}
                 required 
             /> 
             <input 
                 type="password"
                 id="password" 
-                className="form-control"
                 name="password" 
                 placeholder="Contraseña" 
-                onChange={this.handleChange} 
+                value={password}
+                onChange={onChange}
                 required 
             /> 
-            <button onClick={this.iniciarSesion}> 
+            <button type="submit"> 
                     Ingresar 
                 </button>
                 </div> 
@@ -132,5 +167,5 @@ render() {
     </div>
     );
 }
-}
+
 export default Login;
