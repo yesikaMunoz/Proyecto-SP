@@ -8,6 +8,9 @@ import ProjectsTickets from "../Pages/Projects/Tickets";
 import ProjectsCreate from "../Pages/Projects/createTicket";
 import Chat from "../Pages/Projects/chat";
 import ChatTickets from "../Pages/Projects/chatTicket";
+import HomeUser from "../Pages/HomeUser";
+import ChatTicketsUser from "../Pages/Projects/chatTicketUser";
+import ChatUser from "../Pages/Projects/chatUser";
 
 function App() {
 return (
@@ -22,6 +25,9 @@ return (
           <Route path='/TicketsC' exact element = {<ProjectsCreate/>}/>
           <Route path='/Chats' exact element = {<ChatTickets/>}/>
           <Route path='/ChatsR/:idTickets' exact element = {<Chat/>}/>
+          <Route path='/HomeU' exact element = {<HomeUser/>}/>
+          <Route path='/ChatU' exact element = {<ChatTicketsUser/>}/>
+          <Route path='/ChatsRu/:idTickets' exact element = {<ChatUser/>}/>
         </Routes>
     </Router>
     </Fragment>

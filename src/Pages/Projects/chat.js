@@ -15,15 +15,17 @@ const Chat = () =>{
     const descriptionT = array[2];
     const userT = array[3];
     const dateT = array[4];
+    const answerT = array[5];
 
     const [tickets, setTickets] = useState({
         title: titleT,
         description: descriptionT,
         username: userT,
         date: dateT ,
+        answerUser: answerT,
         answer: ''
     });
-    const { title, description, username, date,answer} = tickets;
+    const { title, description, username, date,answerUser, answer} = tickets;
     const onChange = (e) => {
         setTickets({
             ...tickets,
@@ -38,7 +40,7 @@ const Chat = () =>{
             description: tickets.description,
             username: tickets.username,
             date: tickets.date,
-            email: tickets.email,
+            answerUser: tickets.answerUser,
             answer: tickets.answer
 
         }
@@ -156,6 +158,15 @@ const Chat = () =>{
                                                     name="date"
                                                     placeholder="Fecha de creacion de este ticket"
                                                     value={date}
+                                                    onChange={onChange}
+                                                    readOnly
+                                                />
+                                                <input
+                                                    type="text"
+                                                    id="answerUser"
+                                                    name="answerUser"
+                                                    placeholder="Respuesta del usuario"
+                                                    value={answerUser}
                                                     onChange={onChange}
                                                     readOnly
                                                 />

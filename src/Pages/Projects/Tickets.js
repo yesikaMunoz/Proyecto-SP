@@ -67,7 +67,7 @@ const ProjectsTickets = () => {
                                                                 <td>{item.description}</td>
                                                                 <td>{item.username}</td>
                                                                 <td>{item.date}</td>
-                                                                <td>{item.answer}</td>
+                                                                <td>{item.answerUser}</td>
                                                             </tr>
                                                         ))
                                                 }

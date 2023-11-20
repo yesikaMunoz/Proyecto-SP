@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../Components/navbar";
-import Sidebar from "../../Components/sidebar";
-import Header from "../../Components/header";
-import { Link, useParams } from "react-router-dom";
+import { Link} from "react-router-dom";
 import Footer from "../../Components/footer";
 import APIInvoke from "../../Utils/APIInvoke";
+import NavbarUser from "../../Components/navbarUser";
+import SidebarUser from "../../Components/sidebarUser";
+import HeaderUser from "../../Components/headerUser";
 
-const ChatTickets = () => {
+const ChatTicketsUser = () => {
     const [tickets, setTickets] = useState([]);
     const cargarTickets = async () => {
         const response = await APIInvoke.invokeGET(`/Tickets`);
@@ -18,10 +18,10 @@ const ChatTickets = () => {
     }, [])
     return (
         <div className="wrapper">
-            <Navbar></Navbar>
-            <Sidebar></Sidebar>
+            <NavbarUser></NavbarUser>
+            <SidebarUser></SidebarUser>
             <div className="content-wrapper">
-                <Header
+                <HeaderUser
                     titulo={"Listado de tickets"}
                     breadCrumb1={"Inicio"}
                     breadCrumb2={"Proyectos"}
@@ -54,9 +54,8 @@ const ChatTickets = () => {
                                                     <th className="sorting" tabIndex="0" aria-controls="example2" rowSpan="1" colSpan="1" aria-label="Browser: activate to sort column ascending">Titulo del ticket</th>
                                                     <th className="sorting" tabIndex="0" aria-controls="example2" rowSpan="1" colSpan="1" aria-label="Platform(s): activate to sort column ascending">Descripcion</th>
                                                     <th className="sorting" tabIndex="0" aria-controls="example2" rowSpan="1" colSpan="1" aria-label="Engine version: activate to sort column ascending">Nombre del usuario</th>
-                                                    <th className="sorting" tabIndex="0" aria-controls="example2" rowSpan="1" colSpan="1" aria-label="CSS grade: activate to sort column ascending">Fecha del registro</th>
-                                                    <th className="sorting" tabIndex="0" aria-controls="example2" rowSpan="1" colSpan="1" aria-label="Browser: activate to sort column ascending">Respuetas del usuario</th>
-                                                    <th></th></tr>
+                                                    <th className="sorting" tabIndex="0" aria-controls="example2" rowSpan="1" colSpan="1" aria-label="CSS grade: activate to sort column ascending">Respuesta</th>
+                                                    <th className="sorting" tabIndex="0" aria-controls="example2" rowSpan="1" colSpan="1" aria-label="Browser: activate to sort column ascending"></th></tr>
                                             </thead>
                                             <tbody>
                                                 {
@@ -67,9 +66,8 @@ const ChatTickets = () => {
                                                                 <td>{item.title}</td>
                                                                 <td>{item.description}</td>
                                                                 <td>{item.username}</td>
-                                                                <td>{item.date}</td>
-                                                                <td>{item.answerUser}</td>
-                                                                <td><Link to={`/ChatsR/${item.id}@${item.title}@${item.description}@${item.username}@${item.date}@${item.answerUser}`} className="btn bg-success">
+                                                                <td>{item.answer}</td>
+                                                                <td><Link to={`/ChatsRU/${item.id}@${item.title}@${item.description}@${item.username}@${item.date}@${item.answer}`} className="btn bg-success">
                                                                     <i className="fas fa-envelope"></i> Contestar
                                                                 </Link></td>
                                                             </tr>
@@ -93,4 +91,4 @@ const ChatTickets = () => {
     );
 }
 
-export default ChatTickets;
+export default ChatTicketsUser;

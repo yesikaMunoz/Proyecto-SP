@@ -1,91 +1,96 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "../../Components/navbar";
-import Sidebar from "../../Components/sidebar";
-import Header from "../../Components/header";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import Navbar from '../../Components/navbar';
+import Sidebar from '../../Components/sidebar';
+import Header from '../../Components/header';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import APIInvoke from "../../Utils/APIInvoke";
 import swal from 'sweetalert';
-import NavbarUser from "../../Components/navbarUser";
-import SidebarUser from "../../Components/sidebarUser";
 
-const ProjectsCreate = () => {
+const ChatUser = () =>{
+
+    const navigate = useNavigate();
+    const {idTickets} = useParams();
+    let array = idTickets.split('@');
+    const titleT = array[1];
+    const descriptionT = array[2];
+    const userT = array[3];
+    const dateT = array[4];
+    const answerT = array[5];
+
     const [tickets, setTickets] = useState({
-        title: '',
-        description: '',
-        username: '',
-        date: ''
+        title: titleT,
+        description: descriptionT,
+        username: userT,
+        date: dateT ,
+        answer:answerT,
+        answerUser: ''
     });
-    const { title, description, username, date } = tickets;
-    useEffect(() => {
-        document.getElementById("title").focus();
-    }, [])
-
+    const { title, description, username, date,answer,answerUser} = tickets;
     const onChange = (e) => {
         setTickets({
             ...tickets,
             [e.target.name]: e.target.value
         })
     }
+    const respuestaTicket = {} =  async () =>{
+        const idTickets = array[0];
 
-    const crearTicket = async () => {
-        const data = {
+        const data ={
             title: tickets.title,
             description: tickets.description,
             username: tickets.username,
-            date: tickets.date
-        }
-        const response = await APIInvoke.invokePOST(`/Tickets`, data);
-        const idTickets = response.id;
+            date: tickets.date,
+            answer: tickets.answer,
+            answerUser: tickets.answerUser
 
-        if (idTickets === '') {
-            const msg = "El ticket no fue creado correctamente.";
-            swal({
-                title: '🤔',
-                text: msg,
-                icon: 'error',
-                buttons: {
-                    confirmar: {
-                        text: 'Ok',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-danger',
-                        closeModal: true
+        }
+        const response = await APIInvoke.invokePUT(`/Tickets/${idTickets}`, data)
+        const idTicketsedit = response.id
+
+        if (idTicketsedit !== idTickets){
+            navigate("/Home")
+            const msg = "La respuesta fue enviada correctamente";
+                swal({
+
+                    title: '-😉👍',
+                    text: msg,
+                    icon: 'success',
+                    buttons: {
+                        confirmar:{
+                            text: 'Ok',
+                            value: true,
+                            visible: true,
+                            className: 'btn btn-danger',
+                            closeModal: true
+                        }
                     }
-                }
-            });
-        } else {
-            const msg = "El ticket fue creado correctamente.";
-            swal({
-                title: '👌',
-                text: msg,
-                icon: 'success',
-                buttons: {
-                    confirmar: {
-                        text: 'Ok',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
-                    }
-                }
-            });
-            setTickets({
-                title: '',
-                description: '',
-                username: '',
-                date: ''
-            })
+                });
+        }else{
+            const msg = "Se ha producido uun error y la respuesta no ha sido enviada.";
+                    swal({
+                        title: '😢',
+                        text: msg,
+                        icon: 'info',
+                        buttons: {
+                            confirmar:{
+                                text: 'Ok',
+                                value: true,
+                                visible: true,
+                                className: 'btn btn-primary',
+                                closeModal: true
+                            }
+                        }
+                    });
         }
     }
-
     const onSubmit = (e) => {
         e.preventDefault();
-        crearTicket();
+        respuestaTicket();
     }
-    return (
-        <div className="wrapper">
-            <NavbarUser></NavbarUser>
-            <SidebarUser></SidebarUser>
+    return(
+<div className="wrapper">
+            <Navbar></Navbar>
+            <Sidebar></Sidebar>
             <div className="content-wrapper">
                 <Header
                     titulo={"Crear Ticket"}
@@ -126,7 +131,7 @@ const ProjectsCreate = () => {
                                                     placeholder="Titulo de tu ticket"
                                                     value={title}
                                                     onChange={onChange}
-                                                    required
+                                                    readOnly
                                                 />
                                                 <input
                                                     type="text"
@@ -135,7 +140,7 @@ const ProjectsCreate = () => {
                                                     placeholder="Descripcion"
                                                     value={description}
                                                     onChange={onChange}
-                                                    required
+                                                    readOnly
                                                 />
                                                 <input
                                                     type="text"
@@ -144,7 +149,7 @@ const ProjectsCreate = () => {
                                                     placeholder="Tu nombre"
                                                     value={username}
                                                     onChange={onChange}
-                                                    required
+                                                    readOnly
                                                 />
                                                 <h9>Fecha de creacion</h9>
                                                 <input
@@ -154,7 +159,24 @@ const ProjectsCreate = () => {
                                                     placeholder="Fecha de creacion de este ticket"
                                                     value={date}
                                                     onChange={onChange}
-                                                    required
+                                                    readOnly
+                                                />
+                                                <input
+                                                    type="text"
+                                                    id="answer"
+                                                    name="answer"
+                                                    placeholder="Respuesta Admin"
+                                                    value={answer}
+                                                    onChange={onChange}
+                                                    readOnly
+                                                />
+                                                <input
+                                                    type="text"
+                                                    id="answerUser"
+                                                    name="answerUser"
+                                                    placeholder="Tu respuesta"
+                                                    value={answerUser}
+                                                    onChange={onChange}
                                                 />
                                                 <button type="submit">
                                                     Enviar
@@ -183,7 +205,7 @@ const ProjectsCreate = () => {
                 </section>
             </div>
         </div>
-    );
+    )
 }
 
-export default ProjectsCreate;
+export default ChatUser;

@@ -2,29 +2,19 @@
   "Usuarios": [
     {
       "username": "Mario Morelo",
-      "email": "mariomorelo09@hotmail.com",
-      "password": "123456",
+      "email": "maramorelo@serviplus.com",
+      "phone": "3146961635",
+      "password": "Mario23182005",
+      "role": "admin",
       "id": 1
     },
     {
-      "username": "Ronald",
-      "email": "serviplus@read.org",
-      "password": "1234567",
-      "id": 2
-    },
-    {
-      "username": "Mario",
-      "email": "mariomorelo09@hotmail.com123456",
+      "username": "Empresa Fa",
+      "email": "santicraksito777@gmail.com",
       "phone": "3146961635",
       "password": "123456",
-      "id": 3
-    },
-    {
-      "username": "Empresa Fa",
-      "email": "dasdsad@sdamdmsl.com",
-      "phone": "3146961635",
-      "password": "123456789",
-      "id": 4
+      "role": "user",
+      "id": 2
     }
   ],
   "Tickets": [
@@ -33,7 +23,8 @@
       "description": "Hola este es un ticket de prueba.",
       "username": "Hola este es un ticket de prueba.",
       "date": "2023-11-18",
-      "answer": "Hola esta es la respuesta del ticket de prueba 2",
+      "answerUser": "Holaaaaaaaaa",
+      "answer": "Hola esta es la respuesta del ticket de prueba",
       "id": 1
     },
     {
@@ -41,7 +32,8 @@
       "description": "Hola este es un ticket de prueba.",
       "username": "Hola este es un ticket de prueba.",
       "date": "2023-11-16",
-      "email": "santicraksito777@gmail.com",
+      "answer": "undefined",
+      "answerUser": "234234",
       "id": 2
     },
     {
@@ -49,7 +41,8 @@
       "description": "Hola este es un ticket de prueba.",
       "username": "Empresa Fa",
       "date": "2023-11-02",
-      "email": "mariomorelo23@fabriautomaticas.com",
+      "answerUser": " m,.-.",
+      "answer": "Hola esta es la respuesta del ticket de prueba",
       "id": 3
     },
     {
@@ -58,6 +51,7 @@
       "username": "Ronald Hernandez",
       "date": "2023-11-17",
       "answer": "Gracias Ronald por el ticket",
+      "answerUser": "hgcvnkml{.-",
       "id": 4
     }
   ]

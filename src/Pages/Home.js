@@ -60,13 +60,12 @@ const Home = () => {
                                 <div className='col-lg-10 col-90'>
                                 <div className='small-box bg-info'>
                                     <div className='inner'>
-                                    <h3>Crea tus propios tickets</h3>
+                                    <h3>Hola Admin 😉😉</h3>
                                         <p>&nbsp;</p>
                                     </div>
                                     <div className='icon'>
                                         <i className='fa fa-bag'/>
                                     </div>
-                                    <Link to={"/TicketsC"} className='small-box-footer'>Ingresa nuevos tickets <i className='fas fa-arrow-circle-right'/></Link>
                                 </div>
                             </div>
                             <br></br>
