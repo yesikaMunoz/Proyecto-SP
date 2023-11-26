@@ -140,12 +140,14 @@ const CreateAccount = () => {
 
     return (
         <div>
-            <div className="container" id="container">
-                <div className="form-container sign-in-container">
-                    <form onSubmit={onSubmit}>
+               <div className='lo'></div>
+            <div className="container1" id="container1">
+                <div className="form-container1 sign-in-container1">
+                    <form className='ño' onSubmit={onSubmit}>
                         <h1>Crea tu cuenta aquí.</h1>
-                        <div className="social-container">
+                        <div className="social-container1">
                             <input
+                            className="ds"
                                 type="text"
                                 name="username"
                                 id="username"
@@ -154,6 +156,7 @@ const CreateAccount = () => {
                                 onChange={onChange}
                             />
                             <input
+                            className="ds"
                                 type="email"
                                 name="email"
                                 id="email"
@@ -162,6 +165,7 @@ const CreateAccount = () => {
                                 onChange={onChange}
                             />
                             <input
+                            className="ds"
                                 type="number"
                                 name="phone"
                                 id="phone"
@@ -170,6 +174,7 @@ const CreateAccount = () => {
                                 onChange={onChange}
                             />
                             <input
+                            className="ds"
                                 type="password"
                                 name="password"
                                 id="password"
@@ -178,6 +183,7 @@ const CreateAccount = () => {
                                 onChange={onChange}
                             />
                             <input
+                            className="ds"
                                 type="password"
                                 name="confirm"
                                 id="confirm"
@@ -185,17 +191,17 @@ const CreateAccount = () => {
                                 value={confirm}
                                 onChange={onChange}
                             />
-                            <button type="submit" to={"#"}>Crear</button>
+                            <button type="submit" to={"#"} className="ghost1">Crear</button>
                         </div>
                     </form>
                 </div>
-                <div className="overlay-container">
-                    <div className="overlay">
-                        <div className="overlay-panel overlay-right">
+                <div className="overlay-container1">
+                    <div className="overlay1">
+                        <div className="overlay-panel1 overlay-right1">
                             <h1>¡Hola, Amigo!</h1>
                             <p>Ya tienes cuenta, ingresa a nuestro portal.</p>
                             <Link to={"/Login"}>
-                                <button className="ghost" id="signUp">Ingresar</button>
+                                <button className="ghost1" id="signUp">Ingresar</button>
                             </Link>
                         </div>
                     </div>

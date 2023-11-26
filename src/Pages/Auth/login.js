@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import APIInvoke from "../../Utils/APIInvoke.js";
 import swal from "sweetalert";
+import '../../css/login.css'
 
 const Login = () => {
     const navigate = useNavigate();
@@ -104,10 +105,10 @@ const Login = () => {
                 localStorage.setItem('role', role);
 
                 // Contener el token de acceso
-                const jwt = existingUser.token;
+                const jwt = existingUser.id;
 
                 // Guardar el token en el local storage
-                localStorage.setItem('token', jwt);
+                localStorage.setItem('id', jwt);
 
                 // Redireccionar según el tipo de cuenta
                 if (role === 'user') {
@@ -143,6 +144,7 @@ const Login = () => {
                             closeModal: true
                         }
                     }
+                    
                 });
                 }
             }
@@ -155,13 +157,15 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <div className="container" id="container">
-                <div className="form-container sign-in-container">
-                    <form onSubmit={onSubmit}>
+        <div >
+            <div className='lo'></div>
+            <div className="container1" id="container1" >
+                <div className="form-container1 sign-in-container1">
+                    <form className='ño' onSubmit={onSubmit}>
                         <h1>Ingresa Aqui</h1>
-                        <div className="social-container">
+                        <div className="social-container1">
                             <input
+                            className="ds"
                                 type="email"
                                 id="email"
                                 name="email"
@@ -171,6 +175,7 @@ const Login = () => {
                                 required
                             />
                             <input
+                            className="ds"
                                 type="password"
                                 id="password"
                                 name="password"
@@ -179,20 +184,20 @@ const Login = () => {
                                 onChange={onChange}
                                 required
                             />
-                            <button type="submit">
+                            <button type="submit" className="ghost1">
                                 Ingresar
                             </button>
                         </div>
                     </form>
                 </div>
-                <Link href="#">¿Olvidaste tu Contraseña?</Link>
-                <div className="overlay-container">
-                    <div className="overlay">
-                        <div className="overlay-panel overlay-right">
+                <div className="overlay-container1">
+                    <div className="overlay1">
+                        <div className="overlay-panel1 overlay-right1">
                             <h1>¡Hola, Amigo!</h1>
-                            <p>Crea tu cuenta con tan solo unos pocos datos</p>
+                            <p>¿No tienes cuenta?
+                                Crea tu cuenta con tan solo unos pocos clicks.</p>
                             <Link to={"/CreateAccount"}>
-                                <button className="ghost" id="signUp">
+                                <button className="ghost1" id="signUp">
                                     Registrar
                                 </button>
                             </Link>

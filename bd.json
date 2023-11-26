@@ -9,50 +9,32 @@
       "id": 1
     },
     {
-      "username": "Empresa Fa",
-      "email": "santicraksito777@gmail.com",
+      "username": "Ronald Hernandez",
+      "email": "mariomorelo09@hotmail.com",
       "phone": "3146961635",
       "password": "123456",
       "role": "user",
       "id": 2
+    },
+    {
+      "username": "Mario Morelo",
+      "email": "santicraksito777@gmail.com",
+      "phone": "3146961635",
+      "password": "12345678",
+      "role": "user",
+      "id": 3
     }
   ],
   "Tickets": [
     {
-      "title": "Ejemplo",
+      "title": "Hola admin ",
       "description": "Hola este es un ticket de prueba.",
-      "username": "Hola este es un ticket de prueba.",
-      "date": "2023-11-18",
-      "answerUser": "Holaaaaaaaaa",
+      "username": "Mario",
+      "date": "2023-11-25",
       "answer": "Hola esta es la respuesta del ticket de prueba",
-      "id": 1
-    },
-    {
-      "title": "Lol",
-      "description": "Hola este es un ticket de prueba.",
-      "username": "Hola este es un ticket de prueba.",
-      "date": "2023-11-16",
-      "answer": "undefined",
+      "userId": "2",
       "answerUser": "234234",
-      "id": 2
-    },
-    {
-      "title": "rup",
-      "description": "Hola este es un ticket de prueba.",
-      "username": "Empresa Fa",
-      "date": "2023-11-02",
-      "answerUser": " m,.-.",
-      "answer": "Hola esta es la respuesta del ticket de prueba",
-      "id": 3
-    },
-    {
-      "title": "Hola Mundo",
-      "description": "Ticket de prueba",
-      "username": "Ronald Hernandez",
-      "date": "2023-11-17",
-      "answer": "Gracias Ronald por el ticket",
-      "answerUser": "hgcvnkml{.-",
-      "id": 4
+      "id": 1
     }
   ]
 }

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../Components/navbar";
-import Sidebar from "../../Components/sidebar";
 import Header from "../../Components/header";
 import { Link } from "react-router-dom";
 import APIInvoke from "../../Utils/APIInvoke";
@@ -28,55 +26,64 @@ const ProjectsCreate = () => {
     }
 
     const crearTicket = async () => {
-        const data = {
-            title: tickets.title,
-            description: tickets.description,
-            username: tickets.username,
-            date: tickets.date
-        }
-        const response = await APIInvoke.invokePOST(`/Tickets`, data);
-        const idTickets = response.id;
+        try {
+            // Recupera el ID de usuario desde el almacenamiento local
+            const userId = localStorage.getItem("id");
 
-        if (idTickets === '') {
-            const msg = "El ticket no fue creado correctamente.";
-            swal({
-                title: '🤔',
-                text: msg,
-                icon: 'error',
-                buttons: {
-                    confirmar: {
-                        text: 'Ok',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-danger',
-                        closeModal: true
+            const data = {
+                title: tickets.title,
+                description: tickets.description,
+                username: tickets.username,
+                date: tickets.date,
+                userId: userId // Agrega el ID de usuario al ticket
+            };
+
+            const response = await APIInvoke.invokePOST(`/Tickets`, data);
+            const idTickets = response.id;
+
+            if (idTickets === '') {
+                const msg = "El ticket no fue creado correctamente.";
+                swal({
+                    title: '🤔',
+                    text: msg,
+                    icon: 'error',
+                    buttons: {
+                        confirmar: {
+                            text: 'Ok',
+                            value: true,
+                            visible: true,
+                            className: 'btn btn-danger',
+                            closeModal: true
+                        }
                     }
-                }
-            });
-        } else {
-            const msg = "El ticket fue creado correctamente.";
-            swal({
-                title: '👌',
-                text: msg,
-                icon: 'success',
-                buttons: {
-                    confirmar: {
-                        text: 'Ok',
-                        value: true,
-                        visible: true,
-                        className: 'btn btn-primary',
-                        closeModal: true
+                });
+            } else {
+                const msg = "El ticket fue creado correctamente.";
+                swal({
+                    title: '👌',
+                    text: msg,
+                    icon: 'success',
+                    buttons: {
+                        confirmar: {
+                            text: 'Ok',
+                            value: true,
+                            visible: true,
+                            className: 'btn btn-primary',
+                            closeModal: true
+                        }
                     }
-                }
-            });
-            setTickets({
-                title: '',
-                description: '',
-                username: '',
-                date: ''
-            })
+                });
+                setTickets({
+                    title: '',
+                    description: '',
+                    username: '',
+                    date: ''
+                });
+            }
+        } catch (error) {
+            console.error("Error al crear el ticket:", error);
         }
-    }
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -93,9 +100,7 @@ const ProjectsCreate = () => {
                     breadCrumb2={"Creacion"}
                     ruta1={"/Home"}
                 />
-
                 <section className='content'>
-
                     <div className="card">
                         <div className="card-header">
                             <h3 className="card-title">Title</h3>

@@ -5,14 +5,21 @@ import APIInvoke from "../../Utils/APIInvoke";
 import NavbarUser from "../../Components/navbarUser";
 import SidebarUser from "../../Components/sidebarUser";
 import HeaderUser from "../../Components/headerUser";
+import '../../css/Style.css'
 
 const ChatTicketsUser = () => {
     const [tickets, setTickets] = useState([]);
+    
+    const userId = localStorage.getItem("id"); // Obtener ID del usuario
+
     const cargarTickets = async () => {
-        const response = await APIInvoke.invokeGET(`/Tickets`);
-        console.log(response.tickets)
-        setTickets(response);
-    }
+        try {
+            const response = await APIInvoke.invokeGET(`/Tickets?userId=${userId}`);
+            setTickets(response);
+        } catch (error) {
+            console.error("Error al cargar los tickets:", error);
+        }
+    };
     useEffect(() => {
         cargarTickets();
     }, [])
@@ -27,7 +34,6 @@ const ChatTicketsUser = () => {
                     breadCrumb2={"Proyectos"}
                     ruta1={"/Home"}
                 />
-
                 <section className='content'>
                     <div className="card">
                         <div className="card-header">
@@ -67,7 +73,7 @@ const ChatTicketsUser = () => {
                                                                 <td>{item.description}</td>
                                                                 <td>{item.username}</td>
                                                                 <td>{item.answer}</td>
-                                                                <td><Link to={`/ChatsRU/${item.id}@${item.title}@${item.description}@${item.username}@${item.date}@${item.answer}`} className="btn bg-success">
+                                                                <td><Link to={`/ChatsRU/${item.id}@${item.title}@${item.description}@${item.username}@${item.date}@${item.answer}@${item.userId}`} className="btn bg-success">
                                                                     <i className="fas fa-envelope"></i> Contestar
                                                                 </Link></td>
                                                             </tr>

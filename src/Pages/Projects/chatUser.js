@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import Navbar from '../../Components/navbar';
 import Sidebar from '../../Components/sidebar';
 import Header from '../../Components/header';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import APIInvoke from "../../Utils/APIInvoke";
 import swal from 'sweetalert';
+import '../../css/Style.css'
 
 const ChatUser = () =>{
 
@@ -16,6 +17,7 @@ const ChatUser = () =>{
     const userT = array[3];
     const dateT = array[4];
     const answerT = array[5];
+    const userIdT = array[6];
 
     const [tickets, setTickets] = useState({
         title: titleT,
@@ -23,9 +25,10 @@ const ChatUser = () =>{
         username: userT,
         date: dateT ,
         answer:answerT,
+        userId:userIdT,
         answerUser: ''
     });
-    const { title, description, username, date,answer,answerUser} = tickets;
+    const { title, description, username, date,answer,userId,answerUser} = tickets;
     const onChange = (e) => {
         setTickets({
             ...tickets,
@@ -41,6 +44,7 @@ const ChatUser = () =>{
             username: tickets.username,
             date: tickets.date,
             answer: tickets.answer,
+            userId: tickets.userId,
             answerUser: tickets.answerUser
 
         }
@@ -48,7 +52,7 @@ const ChatUser = () =>{
         const idTicketsedit = response.id
 
         if (idTicketsedit !== idTickets){
-            navigate("/Home")
+            navigate("/HomeU")
             const msg = "La respuesta fue enviada correctamente";
                 swal({
 
@@ -151,7 +155,6 @@ const ChatUser = () =>{
                                                     onChange={onChange}
                                                     readOnly
                                                 />
-                                                <h9>Fecha de creacion</h9>
                                                 <input
                                                     type="date"
                                                     id="date"
@@ -159,7 +162,7 @@ const ChatUser = () =>{
                                                     placeholder="Fecha de creacion de este ticket"
                                                     value={date}
                                                     onChange={onChange}
-                                                    readOnly
+                                                    
                                                 />
                                                 <input
                                                     type="text"
@@ -169,7 +172,16 @@ const ChatUser = () =>{
                                                     value={answer}
                                                     onChange={onChange}
                                                     readOnly
-                                                />
+                                                /> 
+                                                <input
+                                                type="text"
+                                                id="userId"
+                                                name="userId"
+                                                placeholder="Tu id"
+                                                value={userId}
+                                                onChange={onChange}
+                                                readOnly
+                                            />
                                                 <input
                                                     type="text"
                                                     id="answerUser"
@@ -189,7 +201,7 @@ const ChatUser = () =>{
                                             <div className="overlay-panel overlay-right">
                                                 <h1>¡Hola, Amigo!</h1>
                                                 <p>Visualiza los tickets creados aqui.</p>
-                                                <Link to={"/Tickets"}>
+                                                <Link to={"/ChatU"}>
                                                     <button className="ghost" id="signUp">
                                                         Ver
                                                     </button>

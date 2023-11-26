@@ -5,6 +5,7 @@ import Header from "../../Components/header";
 import { Link, useParams } from "react-router-dom";
 import Footer from "../../Components/footer";
 import APIInvoke from "../../Utils/APIInvoke";
+import '../../css/Style.css'
 
 const ChatTickets = () => {
     const [tickets, setTickets] = useState([]);
@@ -27,7 +28,6 @@ const ChatTickets = () => {
                     breadCrumb2={"Proyectos"}
                     ruta1={"/Home"}
                 />
-
                 <section className='content'>
                     <div className="card">
                         <div className="card-header">
@@ -56,6 +56,7 @@ const ChatTickets = () => {
                                                     <th className="sorting" tabIndex="0" aria-controls="example2" rowSpan="1" colSpan="1" aria-label="Engine version: activate to sort column ascending">Nombre del usuario</th>
                                                     <th className="sorting" tabIndex="0" aria-controls="example2" rowSpan="1" colSpan="1" aria-label="CSS grade: activate to sort column ascending">Fecha del registro</th>
                                                     <th className="sorting" tabIndex="0" aria-controls="example2" rowSpan="1" colSpan="1" aria-label="Browser: activate to sort column ascending">Respuetas del usuario</th>
+                                                    <th className="sorting" tabIndex="0" aria-controls="example2" rowSpan="1" colSpan="1" aria-label="Browser: activate to sort column ascending">Id usuario</th>
                                                     <th></th></tr>
                                             </thead>
                                             <tbody>
@@ -69,7 +70,8 @@ const ChatTickets = () => {
                                                                 <td>{item.username}</td>
                                                                 <td>{item.date}</td>
                                                                 <td>{item.answerUser}</td>
-                                                                <td><Link to={`/ChatsR/${item.id}@${item.title}@${item.description}@${item.username}@${item.date}@${item.answerUser}`} className="btn bg-success">
+                                                                <td>{item.userId}</td>
+                                                                <td><Link to={`/ChatsR/${item.id}@${item.title}@${item.description}@${item.username}@${item.date}@${item.answerUser}@${item.userId}`} className="btn bg-success">
                                                                     <i className="fas fa-envelope"></i> Contestar
                                                                 </Link></td>
                                                             </tr>

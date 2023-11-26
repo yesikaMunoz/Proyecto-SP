@@ -6,7 +6,7 @@ import HeaderUser from '../Components/headerUser';
 
 const HomeUser = () => {
     return (
-        <div class="wrapper">
+        <div className="wrapper">
             <NavbarUser></NavbarUser>
             <SidebarUser></SidebarUser>
             <div className="content-wrapper">

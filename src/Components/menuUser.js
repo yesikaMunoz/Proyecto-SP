@@ -17,13 +17,13 @@ const MenuUser = () => {
                     </Link>
                 </li>
                 <li className="nav-item" >
-                    <Link to={"/Tickets"} className="nav-link">
+                    <Link to={"/TicketsC"} className="nav-link">
                         <i className="nav-icon fas fa-file" />
                         <p>Tickets</p>
                     </Link>
                 </li>
                 <li className="nav-item" >
-                    <Link to={"/Login"} className="nav-link">
+                    <Link to={"/Principal"} className="nav-link">
                         <i className="nav-icon fas fa-paper-plane" />
                         <p>Salir</p>
                     </Link>
