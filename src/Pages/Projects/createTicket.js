@@ -13,6 +13,7 @@ const ProjectsCreate = () => {
         username: '',
         date: ''
     });
+    
     const { title, description, username, date } = tickets;
     useEffect(() => {
         document.getElementById("title").focus();
@@ -36,10 +37,11 @@ const ProjectsCreate = () => {
                 username: tickets.username,
                 date: tickets.date,
                 userId: userId // Agrega el ID de usuario al ticket
-            };
-
+            }; 
+    
             const response = await APIInvoke.invokePOST(`/Tickets`, data);
             const idTickets = response.id;
+            
 
             if (idTickets === '') {
                 const msg = "El ticket no fue creado correctamente.";
@@ -89,7 +91,9 @@ const ProjectsCreate = () => {
         e.preventDefault();
         crearTicket();
     }
+    const fechaActual = new Date().toISOString().split("T")[0];
     return (
+
         <div className="wrapper">
             <NavbarUser></NavbarUser>
             <SidebarUser></SidebarUser>
@@ -160,6 +164,7 @@ const ProjectsCreate = () => {
                                                     value={date}
                                                     onChange={onChange}
                                                     required
+                                                    min ={fechaActual}
                                                 />
                                                 <button type="submit">
                                                     Enviar

@@ -23,6 +23,14 @@
       "password": "12345678",
       "role": "user",
       "id": 3
+    },
+    {
+      "username": "Ronald",
+      "email": "Ronald@serviplus.com",
+      "phone": "3146961635",
+      "password": "123456",
+      "role": "admin",
+      "id": 4
     }
   ],
   "Tickets": [
@@ -31,10 +39,26 @@
       "description": "Hola este es un ticket de prueba.",
       "username": "Mario",
       "date": "2023-11-25",
-      "answer": "Hola esta es la respuesta del ticket de prueba",
+      "answerUser": "Hola",
       "userId": "2",
-      "answerUser": "234234",
+      "answer": "Hola",
       "id": 1
+    },
+    {
+      "title": "Fua que bueno los graficos",
+      "description": "Muy buenos grafico",
+      "username": "Ronald Hernandez",
+      "date": "2023-11-26",
+      "userId": "3",
+      "id": 2
+    },
+    {
+      "title": "Juego defectuoso",
+      "description": "no esta bien el juego",
+      "username": "Mario Morelo",
+      "date": "2023-11-27",
+      "userId": "2",
+      "id": 3
     }
   ]
 }

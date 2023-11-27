@@ -29,7 +29,7 @@ return (
           <Route path='/HomeU' exact element = {<HomeUser/>}/>
           <Route path='/ChatU' exact element = {<ChatTicketsUser/>}/>
           <Route path='/ChatsRu/:idTickets' exact element = {<ChatUser/>}/>
-          <Route path='/Principal' exact element = {<MenuPrincipal/>}/>
+          <Route path='/' exact element = {<MenuPrincipal/>}/>
         </Routes>
     </Router>
     </Fragment>

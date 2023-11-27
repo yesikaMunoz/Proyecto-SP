@@ -32,7 +32,7 @@ const Menu = () => {
                 </li>
 
                 <li className="nav-item" >
-                    <Link to={"/Principal"} className="nav-link">
+                    <Link to={"/"} className="nav-link">
                         <i className="nav-icon fas fa-paper-plane" />
                         <p>Salir</p>
                     </Link>
