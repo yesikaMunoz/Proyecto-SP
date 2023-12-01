@@ -56,7 +56,7 @@ const ChatUser = () =>{
             const msg = "La respuesta fue enviada correctamente";
                 swal({
 
-                    title: '-😉👍',
+                    title: '!Exito¡',
                     text: msg,
                     icon: 'success',
                     buttons: {
@@ -72,7 +72,7 @@ const ChatUser = () =>{
         }else{
             const msg = "Se ha producido uun error y la respuesta no ha sido enviada.";
                     swal({
-                        title: '😢',
+                        title: '!Error¡',
                         text: msg,
                         icon: 'info',
                         buttons: {
@@ -127,9 +127,11 @@ const ChatUser = () =>{
                                 <div className="container" id="container">
                                     <div className="form-container sign-in-container">
                                         <form onSubmit={onSubmit}>
-                                            <div className="social-container">
+                                        <div className="form-group">
+                                        <h5>Titulo</h5> 
                                                 <input
                                                     type="text"
+                                                    class="form-control"
                                                     id="title"
                                                     name="title"
                                                     placeholder="Titulo de tu ticket"
@@ -137,8 +139,11 @@ const ChatUser = () =>{
                                                     onChange={onChange}
                                                     readOnly
                                                 />
+                                                <br></br>
+                                                <h5>Descripcion</h5>
                                                 <input
                                                     type="text"
+                                                    class="form-control"
                                                     id="description"
                                                     name="description"
                                                     placeholder="Descripcion"
@@ -146,8 +151,11 @@ const ChatUser = () =>{
                                                     onChange={onChange}
                                                     readOnly
                                                 />
+                                                <br></br>
+                                                <h5>Nombre</h5> 
                                                 <input
                                                     type="text"
+                                                    class="form-control"
                                                     id="username"
                                                     name="username"
                                                     placeholder="Tu nombre"
@@ -155,8 +163,11 @@ const ChatUser = () =>{
                                                     onChange={onChange}
                                                     readOnly
                                                 />
+                                                <br></br>
+                                                <h5>Fecha de creacion</h5>
                                                 <input
                                                     type="date"
+                                                    class="form-control"
                                                     id="date"
                                                     name="date"
                                                     placeholder="Fecha de creacion de este ticket"
@@ -164,8 +175,11 @@ const ChatUser = () =>{
                                                     onChange={onChange}
                                                     
                                                 />
+                                                <br></br>
+                                                <h5>Respuesta admin</h5>
                                                 <input
                                                     type="text"
+                                                    class="form-control"
                                                     id="answer"
                                                     name="answer"
                                                     placeholder="Respuesta Admin"
@@ -173,8 +187,11 @@ const ChatUser = () =>{
                                                     onChange={onChange}
                                                     readOnly
                                                 /> 
+                                                <br></br>
+                                                <h5>Tu id</h5>
                                                 <input
                                                 type="text"
+                                                class="form-control"
                                                 id="userId"
                                                 name="userId"
                                                 placeholder="Tu id"
@@ -182,15 +199,18 @@ const ChatUser = () =>{
                                                 onChange={onChange}
                                                 readOnly
                                             />
+                                            <br></br>
+                                                <h5>Repuesta tuya</h5>
                                                 <input
                                                     type="text"
+                                                    class="form-control"
                                                     id="answerUser"
                                                     name="answerUser"
                                                     placeholder="Tu respuesta"
                                                     value={answerUser}
                                                     onChange={onChange}
-                                                />
-                                                <button type="submit">
+                                                /><br></br>
+                                                <button type="submit" className="btn btn-success">
                                                     Enviar
                                                 </button>
                                             </div>
@@ -198,15 +218,6 @@ const ChatUser = () =>{
                                     </div>
                                     <div className="overlay-container">
                                         <div className="overlay">
-                                            <div className="overlay-panel overlay-right">
-                                                <h1>¡Hola, Amigo!</h1>
-                                                <p>Visualiza los tickets creados aqui.</p>
-                                                <Link to={"/ChatU"}>
-                                                    <button className="ghost" id="signUp">
-                                                        Ver
-                                                    </button>
-                                                </Link>
-                                            </div>
                                         </div>
                                     </div>
 

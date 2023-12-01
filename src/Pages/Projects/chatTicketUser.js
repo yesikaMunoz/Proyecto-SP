@@ -5,6 +5,7 @@ import APIInvoke from "../../Utils/APIInvoke";
 import NavbarUser from "../../Components/navbarUser";
 import SidebarUser from "../../Components/sidebarUser";
 import HeaderUser from "../../Components/headerUser";
+import swal from "sweetalert";
 import '../../css/Style.css'
 
 const ChatTicketsUser = () => {
@@ -23,6 +24,28 @@ const ChatTicketsUser = () => {
     useEffect(() => {
         cargarTickets();
     }, [])
+
+    const eliminarTiket = async (e,id) => {
+        e.preventDefault();
+      const response = await APIInvoke.invokeDELETE(`/Tickets/${id}`);
+      if (response) { 
+        const msg = "Ticket eliminado correctamente";
+        swal({
+          title: "Información",
+          text: msg,
+          icon: "success",
+          buttons: {
+            confirm: {
+              text: "Ok",
+              value: true,
+              visible: true,
+              className: "btn btn-primary",
+              closeModal: true,
+              },
+            },
+          });
+        }
+    }
     return (
         <div className="wrapper">
             <NavbarUser></NavbarUser>
@@ -75,7 +98,9 @@ const ChatTicketsUser = () => {
                                                                 <td>{item.answer}</td>
                                                                 <td><Link to={`/ChatsRU/${item.id}@${item.title}@${item.description}@${item.username}@${item.date}@${item.answer}@${item.userId}`} className="btn bg-success">
                                                                     <i className="fas fa-envelope"></i> Contestar
-                                                                </Link></td>
+                                                                </Link>&ensp; 
+                                                                <button onClick={(e)=>eliminarTiket(e,item.id)} className="btn btn-sm btn-danger">Eliminar</button>
+                                                                </td>
                                                             </tr>
                                                         ))
                                                 }

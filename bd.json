@@ -9,55 +9,41 @@
       "id": 1
     },
     {
-      "username": "Ronald Hernandez",
-      "email": "mariomorelo09@hotmail.com",
-      "phone": "3146961635",
+      "username": "kevin",
+      "email": "kevin@gmail.com",
+      "phone": "3212346741",
       "password": "123456",
       "role": "user",
       "id": 2
     },
     {
-      "username": "Mario Morelo",
-      "email": "santicraksito777@gmail.com",
-      "phone": "3146961635",
-      "password": "12345678",
+      "username": "yesika",
+      "email": "yesika@gmail.com",
+      "phone": "32012547",
+      "password": "123456",
       "role": "user",
       "id": 3
-    },
-    {
-      "username": "Ronald",
-      "email": "Ronald@serviplus.com",
-      "phone": "3146961635",
-      "password": "123456",
-      "role": "admin",
-      "id": 4
     }
   ],
   "Tickets": [
     {
-      "title": "Hola admin ",
-      "description": "Hola este es un ticket de prueba.",
-      "username": "Mario",
-      "date": "2023-11-25",
-      "answerUser": "Hola",
+      "title": "Mal servicio",
+      "description": "holxd",
+      "username": "Kevin",
+      "date": "2023-12-01",
+      "answerUser": "undefined",
       "userId": "2",
-      "answer": "Hola",
+      "answer": "Hola como te puedo ayudar?",
       "id": 1
     },
     {
-      "title": "Fua que bueno los graficos",
-      "description": "Muy buenos grafico",
-      "username": "Ronald Hernandez",
-      "date": "2023-11-26",
+      "title": "no tengo agua",
+      "description": "no tengo ",
+      "username": "yesika",
+      "date": "2023-12-13",
+      "answer": "no te bañes",
       "userId": "3",
-      "id": 2
-    },
-    {
-      "title": "Juego defectuoso",
-      "description": "no esta bien el juego",
-      "username": "Mario Morelo",
-      "date": "2023-11-27",
-      "userId": "2",
+      "answerUser": "sapo",
       "id": 3
     }
   ]

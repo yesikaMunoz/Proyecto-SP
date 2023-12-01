@@ -17,6 +17,7 @@ const ChatTickets = () => {
     useEffect(() => {
         cargarTickets();
     }, [])
+    
     return (
         <div className="wrapper">
             <Navbar></Navbar>
@@ -74,6 +75,7 @@ const ChatTickets = () => {
                                                                 <td><Link to={`/ChatsR/${item.id}@${item.title}@${item.description}@${item.username}@${item.date}@${item.answerUser}@${item.userId}`} className="btn bg-success">
                                                                     <i className="fas fa-envelope"></i> Contestar
                                                                 </Link></td>
+                                                                
                                                             </tr>
                                                         ))
                                                 }

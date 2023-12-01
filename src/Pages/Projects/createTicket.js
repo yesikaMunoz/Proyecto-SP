@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../Components/header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import APIInvoke from "../../Utils/APIInvoke";
 import swal from 'sweetalert';
 import NavbarUser from "../../Components/navbarUser";
 import SidebarUser from "../../Components/sidebarUser";
 
 const ProjectsCreate = () => {
+    const navegate = useNavigate();
     const [tickets, setTickets] = useState({
         title: '',
         description: '',
@@ -46,7 +47,7 @@ const ProjectsCreate = () => {
             if (idTickets === '') {
                 const msg = "El ticket no fue creado correctamente.";
                 swal({
-                    title: '🤔',
+                    title: '!Error¡',
                     text: msg,
                     icon: 'error',
                     buttons: {
@@ -62,7 +63,7 @@ const ProjectsCreate = () => {
             } else {
                 const msg = "El ticket fue creado correctamente.";
                 swal({
-                    title: '👌',
+                    title: '!Exito¡',
                     text: msg,
                     icon: 'success',
                     buttons: {
@@ -75,6 +76,7 @@ const ProjectsCreate = () => {
                         }
                     }
                 });
+                navegate("/ChatU")
                 setTickets({
                     title: '',
                     description: '',
@@ -127,9 +129,11 @@ const ProjectsCreate = () => {
                                 <div className="container" id="container">
                                     <div className="form-container sign-in-container">
                                         <form onSubmit={onSubmit}>
-                                            <div className="social-container">
+                                            <div className="form-group">
+                                            <h5>Titulo</h5> 
                                                 <input
                                                     type="text"
+                                                    class="form-control"    
                                                     id="title"
                                                     name="title"
                                                     placeholder="Titulo de tu ticket"
@@ -137,8 +141,11 @@ const ProjectsCreate = () => {
                                                     onChange={onChange}
                                                     required
                                                 />
+                                                <br></br>
+                                                <h5>Descripcion</h5> 
                                                 <input
                                                     type="text"
+                                                    class="form-control"
                                                     id="description"
                                                     name="description"
                                                     placeholder="Descripcion"
@@ -146,8 +153,11 @@ const ProjectsCreate = () => {
                                                     onChange={onChange}
                                                     required
                                                 />
+                                                <br></br>
+                                                <h5>Nombre</h5> 
                                                 <input
                                                     type="text"
+                                                    class="form-control"
                                                     id="username"
                                                     name="username"
                                                     placeholder="Tu nombre"
@@ -155,9 +165,11 @@ const ProjectsCreate = () => {
                                                     onChange={onChange}
                                                     required
                                                 />
-                                                <h9>Fecha de creacion</h9>
+                                                <br></br>
+                                                <h5>Fecha de creacion</h5>
                                                 <input
                                                     type="date"
+                                                    class="form-control"
                                                     id="date"
                                                     name="date"
                                                     placeholder="Fecha de creacion de este ticket"
@@ -166,26 +178,13 @@ const ProjectsCreate = () => {
                                                     required
                                                     min ={fechaActual}
                                                 />
-                                                <button type="submit">
+                                                <br></br>
+                                                <button type="submit" className="btn btn-success">
                                                     Enviar
                                                 </button>
                                             </div>
                                         </form>
                                     </div>
-                                    <div className="overlay-container">
-                                        <div className="overlay">
-                                            <div className="overlay-panel overlay-right">
-                                                <h1>¡Hola, Amigo!</h1>
-                                                <p>Visualiza los tickets creados aqui.</p>
-                                                <Link to={"/Tickets"}>
-                                                    <button className="ghost" id="signUp">
-                                                        Ver
-                                                    </button>
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>

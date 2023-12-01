@@ -3,7 +3,7 @@ import Navbar from '../Components/navbar';
 import Sidebar from '../Components/sidebar';
 import Header from '../Components/header';
 import { Link } from 'react-router-dom';
-
+ 
 const Home = () => {
     return (
         <div class="wrapper">
@@ -17,61 +17,58 @@ const Home = () => {
                     ruta1={"/menu"}
                 />
         
-                <section className='content'>
-                    <div className='container-fluid'>
-                        <div className='row'>
-
-                            <div className='col-lg-10 col-90'>
-                                <div className='small-box bg-info'>
-                                    <div className='inner'>
-                                        <h3>Usuarios</h3>
-                                        <p>&nbsp;</p>
-                                    </div>
-                                    <div className='icon'>
-                                        <i className='fa fa-bag'/>
-                                    </div>
-                                    <Link to={"/Projects"} className='small-box-footer'>Ver los usuarios recientes <i className='fas fa-arrow-circle-right'/></Link>
-                                </div>
-                            </div>
-                            <div className='col-lg-10 col-90'>
-                                <div className='small-box bg-info'>
-                                    <div className='inner'>
-                                        <h3>Tickets</h3>
-                                        <p>&nbsp;</p>
-                                    </div>
-                                    <div className='icon'>
-                                        <i className='fa fa-bag'/>
-                                    </div>
-                                    <Link to={"/Tickets"} className='small-box-footer'>Ver los tickets registrados este mes <i className='fas fa-arrow-circle-right'/></Link>
-                                </div>
-                                </div>
-                                <div className='col-lg-10 col-90'>
-                                <div className='small-box bg-info'>
-                                    <div className='inner'>
-                                        <h3>Chatea</h3>
-                                        <p>&nbsp;</p>
-                                    </div>
-                                    <div className='icon'>
-                                        <i className='fa fa-bag'/>
-                                    </div>
-                                    <Link to={"/Chats"} className='small-box-footer'>Chatea con los usuarios sobre sus tickets<i  className='fas fa-arrow-circle-right'/></Link>
-                                </div>
-                                </div>
-                                <div className='col-lg-10 col-90'>
-                                <div className='small-box bg-info'>
-                                    <div className='inner'>
-                                    <h3>Hola Admin 😉😉</h3>
-                                        <p>&nbsp;</p>
-                                    </div>
-                                    <div className='icon'>
-                                        <i className='fa fa-bag'/>
-                                    </div>
-                                </div>
-                            </div>
-                            <br></br>
-                            </div>
-                        </div>
-                </section>
+        <section className="content">
+          <div className="container-fluid">
+            <div className="row">
+            <div className="col-lg-3 col-6">
+                <div className="small-box bg-success">
+                  <div className="inner">
+                    <h3>Usuarios</h3>
+                    <p>&nbsp;</p>
+                  </div>
+                  <div className="icon">
+                  <i className="nav-icon fas fa-share"></i>
+                  </div>
+                  <Link to={`/Projects`} className="small-box-footer">
+                    Ver usuarios
+                    <i className="fas fa arrow-circle-right" />
+                  </Link>
+                </div>
+              </div>
+              <div className="col-lg-3 col-6">
+                <div className="small-box bg-info">
+                  <div className="inner">
+                    <h3>Tickets</h3>
+                    <p>&nbsp;</p>
+                  </div>
+                  <div className="icon">
+                  <i className="nav-icon fas  fa-paper-plane" />
+                  </div>
+                  <Link to={"/Tickets" } className="small-box-footer">
+                     Ver Ticket
+                    <i className="fas fa arrow-circle-right" />
+                  </Link>
+                </div>
+              </div>  
+              <div className="col-lg-3 col-6">
+                <div className="small-box bg-info">
+                  <div className="inner">
+                    <h3>Chat</h3>
+                    <p>&nbsp;</p>
+                  </div>
+                  <div className="icon">
+                  <i className="nav-icon fas  fa-paper-plane" />
+                  </div>
+                  <Link to={"/Chats" } className="small-box-footer">
+                    Ver Chats
+                    <i className="fas fa arrow-circle-right" />
+                  </Link>
+                </div>
+              </div>              
+            </div>
+          </div>
+          
+        </section>
             </div>
         </div>
     );

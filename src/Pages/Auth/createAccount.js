@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../../css/login.css";
 import APIInvoke from "../../Utils/APIInvoke";
 import swal from 'sweetalert';
 
@@ -48,7 +47,7 @@ const CreateAccount = () => {
         if (password !== confirm) {
             const msg = "Contraseñas no coinciden.";
             swal({
-                title: '🤨',
+                title: '!Error¡',
                 text: msg,
                 icon: 'error',
                 buttons: {
@@ -64,7 +63,7 @@ const CreateAccount = () => {
         } else if (password.length < 6) {
             const msg = "Contraseña demasiado corta (mayor a 6 caracteres.)";
             swal({
-                title: '🤫',
+                title: '!Error¡',
                 text: msg,
                 icon: 'warning',
                 buttons: {
@@ -82,7 +81,7 @@ const CreateAccount = () => {
             if (existingUser) {
                 const msg = "El usuario ya existe.";
                 swal({
-                    title: '😒',
+                    title: '!Error¡',
                     text: msg,
                     icon: 'info',
                     buttons: {
@@ -98,7 +97,7 @@ const CreateAccount = () => {
             } else {
                 const msg = "El usuario fue creado correctamente.";
                 swal({
-                    title: '😁👍',
+                    title: '!Exito¡',
                     text: msg,
                     icon: 'success',
                     buttons: {
@@ -139,15 +138,121 @@ const CreateAccount = () => {
     };
 
     return (
-        <div>
-               <div className='lo'></div>
-            <div className="container1" id="container1">
-                <div className="form-container1 sign-in-container1">
-                    <form className='ño' onSubmit={onSubmit}>
-                        <h1>Crea tu cuenta aquí.</h1>
-                        <div className="social-container1">
+        <div className="hold-transition login-page">
+        <div className="login-box">
+          <div className="login-logo">
+            <Link to={"#"}>
+              <b>Crea tu</b> Usuario
+            </Link>
+          </div>
+          <div className="card">
+            <div className="card-body login-card-body">
+              <p className="login-box-msg">
+                Bienvenido, ingrese los datos requeridos para crear un usuario
+                nuevo
+              </p>
+              <form onSubmit={onSubmit}>
+            <div className="input-group mb-3">
+              <input
+                type="text"
+                className="form-control"
+                name="username"
+                id="username"
+                placeholder="Nombre de usuario"
+                value={username}
+                onChange={onChange}
+              />
+              <div className="input-group-append">
+                <div className="input-group-text">
+                  <span className="fas fa-user" />
+                </div>
+              </div>
+            </div>
+            <div className="input-group mb-3">
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email"
+                name="email"
+                value={email}
+                onChange={onChange}
+                required
+              />
+              <div className="input-group-append">
+                <div className="input-group-text">
+                  <span className="fas fa-envelope" />
+                </div>
+              </div>
+            </div>
+            <div className="input-group mb-3">
+              <input
+                type="number"
+                className="form-control"
+                name="phone"
+                id="phone"
+                placeholder="Telefono"
+                value={phone}
+                onChange={onChange}
+              />
+              <div className="input-group-append">
+                <div className="input-group-text">
+                  <span className="fas fa-lock" />
+                </div>
+              </div>
+            </div>
+            <div className="input-group mb-3">
+              <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  id="password"
+                  placeholder="Contraseña"
+                  value={password}
+                  onChange={onChange}
+              />
+              <div className="input-group-append">
+                <div className="input-group-text">
+                  <span className="fas fa-lock" />
+                </div>
+              </div>
+            </div>
+            <div className="input-group mb-3">
+              <input
+                 type="password"
+                 className="form-control"
+                 name="confirm"
+                 id="confirm"
+                 placeholder="Confirma tu contraseña"
+                 value={confirm}
+                 onChange={onChange}
+              />
+              <div className="input-group-append">
+                <div className="input-group-text">
+                  <span className="fas fa-lock" />
+                </div>
+              </div>
+            </div>
+            <div className="social-auth-links text-center mb-3">
+              <button type="submit" className="btn btn-block btn-primary">
+                <i /> Enviar
+              </button>
+            </div>
+            <Link to={"/Login"} className="btn btn-block btn-danger">
+              <i /> Login
+            </Link>
+          </form>
+            </div>
+          </div>
+        </div>
+        </div>
+      );
+};
+
+export default CreateAccount;
+
+/* <div className="social-container1">
                             <input
-                            className="ds"
+                            className="input-group mb-3"
                                 type="text"
                                 name="username"
                                 id="username"
@@ -192,23 +297,4 @@ const CreateAccount = () => {
                                 onChange={onChange}
                             />
                             <button type="submit" to={"#"} className="ghost1">Crear</button>
-                        </div>
-                    </form>
-                </div>
-                <div className="overlay-container1">
-                    <div className="overlay1">
-                        <div className="overlay-panel1 overlay-right1">
-                            <h1>¡Hola, Amigo!</h1>
-                            <p>Ya tienes cuenta, ingresa a nuestro portal.</p>
-                            <Link to={"/Login"}>
-                                <button className="ghost1" id="signUp">Ingresar</button>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-export default CreateAccount;
+                        </div> */

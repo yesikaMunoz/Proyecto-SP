@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import APIInvoke from "../../Utils/APIInvoke.js";
 import swal from "sweetalert";
-import '../../css/login.css'
+
 
 const Login = () => {
     const navigate = useNavigate();
@@ -49,7 +49,7 @@ const Login = () => {
         if (password.length < 6) {
             const msg = "Contraseña demasiado corta (Debe superar los 6 caracteres).";
             swal({
-                title: "😠",
+                title: "!Error¡",
                 text: msg,
                 icon: "info",
                 buttons: {
@@ -68,7 +68,7 @@ const Login = () => {
             if (!existingUser) {
                 const msg = "No fue posible iniciar sesión, usuario o contraseña incorrecto.";
                 swal({
-                    title: '😑',
+                    title: '!Error¡',
                     text: msg,
                     icon: 'error',
                     buttons: {
@@ -84,7 +84,7 @@ const Login = () => {
             } else {
                 const msg = "Ingreso exitoso";
                 swal({
-                    title: '🥳🥳',
+                    title: '!Exito¡',
                     text: msg,
                     icon: 'success',
                     buttons: {
@@ -115,7 +115,7 @@ const Login = () => {
                     navigate("/HomeU");
                     const msg = "Ingreso exitoso, bienvenido Usuario";
                     swal({
-                        title: '🥳🥳',
+                        title: '!Exito¡',
                         text: msg,
                         icon: 'success',
                         buttons: {
@@ -132,7 +132,7 @@ const Login = () => {
                     navigate("/Home");
                      const msg = "Ingreso exitoso, bienvenido Admin";
                 swal({
-                    title: '🥳🥳',
+                    title: '!Exito¡',
                     text: msg,
                     icon: 'success',
                     buttons: {
@@ -157,56 +157,70 @@ const Login = () => {
     }
 
     return (
-        <div >
-            <div className='lo'></div>
-            <div className="container1" id="container1" >
-                <div className="form-container1 sign-in-container1">
-                    <form className='ño' onSubmit={onSubmit}>
-                        <h1>Ingresa Aqui</h1>
-                        <div className="social-container1">
-                            <input
-                            className="ds"
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Email"
-                                value={email}
-                                onChange={onChange}
-                                required
-                            />
-                            <input
-                            className="ds"
-                                type="password"
-                                id="password"
-                                name="password"
-                                placeholder="Contraseña"
-                                value={password}
-                                onChange={onChange}
-                                required
-                            />
-                            <button type="submit" className="ghost1">
-                                Ingresar
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div className="overlay-container1">
-                    <div className="overlay1">
-                        <div className="overlay-panel1 overlay-right1">
-                            <h1>¡Hola, Amigo!</h1>
-                            <p>¿No tienes cuenta?
-                                Crea tu cuenta con tan solo unos pocos clicks.</p>
-                            <Link to={"/CreateAccount"}>
-                                <button className="ghost1" id="signUp">
-                                    Registrar
-                                </button>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div className="login-box" style={{ width: '100vw', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <div className="login-logo">
+          <b>Iniciar</b> Sesión
         </div>
+        <div className="card">
+          <div className="card-body login-card-body">
+            <p className="login-box-msg">Sign in to start your session</p>
+            
+            <form onSubmit={onSubmit}>
+              <div className="input-group mb-3">
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={onChange}
+                  required
+                />
+
+                <div className="input-group-append">
+                  <div className="input-group-text">
+                    <span className="fas fa-envelope" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="input-group mb-3">
+                <input
+                  type="password"
+                  className="form-control"
+                  placeholder="Password"
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={onChange}
+                  required
+                />
+
+                <div className="input-group-append">
+                  <div className="input-group-text">
+                    <span className="fas fa-lock" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col-8"></div>
+              </div>
+
+              <div className="social-auth-links text-center mb-3">
+                <button type="submit" className="btn btn-block btn-primary">
+                  Ingresar
+                </button>
+                <Link to={"/CreateAccount"} className="btn btn-block btn-danger">
+                  <i /> Crear Cuenta
+                </Link>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     );
-}
+  };
 
 export default Login;
